@@ -44,6 +44,10 @@
             this.lbl__test = new System.Windows.Forms.Label();
             this.dateTimePicker_input = new System.Windows.Forms.DateTimePicker();
             this.listView_output = new System.Windows.Forms.ListView();
+            this.column_date = new System.Windows.Forms.ColumnHeader();
+            this.column_city = new System.Windows.Forms.ColumnHeader();
+            this.column_state = new System.Windows.Forms.ColumnHeader();
+            this.column_temp = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // lbl_weather_info
@@ -162,7 +166,7 @@
             // lbl__test
             // 
             this.lbl__test.AutoSize = true;
-            this.lbl__test.Location = new System.Drawing.Point(105, 302);
+            this.lbl__test.Location = new System.Drawing.Point(435, 182);
             this.lbl__test.Name = "lbl__test";
             this.lbl__test.Size = new System.Drawing.Size(50, 20);
             this.lbl__test.TabIndex = 14;
@@ -177,11 +181,36 @@
             // 
             // listView_output
             // 
-            this.listView_output.Location = new System.Drawing.Point(204, 292);
+            this.listView_output.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.column_date,
+            this.column_city,
+            this.column_state,
+            this.column_temp});
+            this.listView_output.Location = new System.Drawing.Point(46, 292);
             this.listView_output.Name = "listView_output";
-            this.listView_output.Size = new System.Drawing.Size(151, 121);
+            this.listView_output.Size = new System.Drawing.Size(704, 146);
             this.listView_output.TabIndex = 16;
             this.listView_output.UseCompatibleStateImageBehavior = false;
+            this.listView_output.View = System.Windows.Forms.View.Details;
+            // 
+            // column_date
+            // 
+            this.column_date.Text = "Date";
+            // 
+            // column_city
+            // 
+            this.column_city.Text = "City";
+            this.column_city.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // column_state
+            // 
+            this.column_state.Text = "State";
+            this.column_state.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // column_temp
+            // 
+            this.column_temp.Text = "Temperature";
+            this.column_temp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
@@ -229,5 +258,9 @@
         private Label lbl__test;
         private DateTimePicker dateTimePicker_input;
         private ListView listView_output;
+        private ColumnHeader column_date;
+        private ColumnHeader column_city;
+        private ColumnHeader column_state;
+        private ColumnHeader column_temp;
     }
 }
