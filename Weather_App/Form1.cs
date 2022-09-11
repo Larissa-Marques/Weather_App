@@ -13,7 +13,7 @@ namespace Weather_App
         {
             //When this button is clicked,display city, state, temp and date
             // be displayed as a label
-            string[] row = { dateTimePicker_input.Value.ToString(), textBox_city.Text, comboBox_state.Text, textBox_temp.Text };
+            string[] row = { dateTimePicker_input.Value.ToShortDateString(), textBox_city.Text, comboBox_state.Text, textBox_temp.Text };
             ListViewItem listViewItem = new ListViewItem(row);
             listView_output.Items.Add(listViewItem);
         }
@@ -32,7 +32,13 @@ namespace Weather_App
             //When this button is clicked, it will find on the table the data entered by the user
             string search_term = textBox_search.Text;
             ListViewItem matched_item = listView_output.FindItemWithText(search_term);
-            MessageBox.Show(matched_item.Text);
+
+            if (matched_item != null)
+                MessageBox.Show("Date: " + matched_item.SubItems[0].Text + "\nCity: " +
+                    matched_item.SubItems[1].Text + "\nState: " +
+                    matched_item.SubItems[2].Text + "\nTemperature: " + matched_item.SubItems[3].Text);
+            else
+                MessageBox.Show("Search not found!");
         }
     }
 }
