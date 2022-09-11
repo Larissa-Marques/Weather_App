@@ -40,5 +40,41 @@ namespace Weather_App
             else
                 MessageBox.Show("Search not found!");
         }
+
+        private void btn_remove_Click(object sender, EventArgs e)
+        {
+
+            listView_output.Items.Remove(listView_output.SelectedItems[0]);
+           
+        }
+
+        private void btn_edit_Click(object sender, EventArgs e)
+        {
+            ListViewItem selected_item = listView_output.SelectedItems[0];
+            dateTimePicker_input.Text = selected_item.SubItems[0].Text;
+            textBox_city.Text = selected_item.SubItems[1].Text;
+            comboBox_state.Text = selected_item.SubItems[2].Text;
+            textBox_temp.Text = selected_item.SubItems[3].Text;
+            listView_output.Items.Remove(selected_item);
+        }
+
+        private void btn_remove_all_Click(object sender, EventArgs e)
+        {
+            listView_output.Items.Clear();
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            string message = "Do you want to save changes?";
+            string caption = "Weather Information";
+            DialogResult result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo);
+
+            // If the no button was pressed ...
+            if (result == DialogResult.Yes)
+            {
+               this.Close();
+            }
+        }
     }
 }

@@ -50,6 +50,10 @@
             this.column_temp = new System.Windows.Forms.ColumnHeader();
             this.textBox_search = new System.Windows.Forms.TextBox();
             this.btn_search = new System.Windows.Forms.Button();
+            this.btn_remove = new System.Windows.Forms.Button();
+            this.btn_edit = new System.Windows.Forms.Button();
+            this.btn_remove_all = new System.Windows.Forms.Button();
+            this.btn_close = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_weather_info
@@ -236,11 +240,55 @@
             this.btn_search.UseVisualStyleBackColor = true;
             this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
+            // btn_remove
+            // 
+            this.btn_remove.Location = new System.Drawing.Point(304, 457);
+            this.btn_remove.Name = "btn_remove";
+            this.btn_remove.Size = new System.Drawing.Size(134, 29);
+            this.btn_remove.TabIndex = 19;
+            this.btn_remove.Text = "Remove Record";
+            this.btn_remove.UseVisualStyleBackColor = true;
+            this.btn_remove.Click += new System.EventHandler(this.btn_remove_Click);
+            // 
+            // btn_edit
+            // 
+            this.btn_edit.Location = new System.Drawing.Point(462, 457);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(101, 29);
+            this.btn_edit.TabIndex = 20;
+            this.btn_edit.Text = "Edit Record";
+            this.btn_edit.UseVisualStyleBackColor = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
+            // 
+            // btn_remove_all
+            // 
+            this.btn_remove_all.Location = new System.Drawing.Point(304, 507);
+            this.btn_remove_all.Name = "btn_remove_all";
+            this.btn_remove_all.Size = new System.Drawing.Size(134, 29);
+            this.btn_remove_all.TabIndex = 21;
+            this.btn_remove_all.Text = "Remove All";
+            this.btn_remove_all.UseVisualStyleBackColor = true;
+            this.btn_remove_all.Click += new System.EventHandler(this.btn_remove_all_Click);
+            // 
+            // btn_close
+            // 
+            this.btn_close.Location = new System.Drawing.Point(469, 507);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(94, 29);
+            this.btn_close.TabIndex = 22;
+            this.btn_close.Text = "Close";
+            this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 566);
+            this.Controls.Add(this.btn_close);
+            this.Controls.Add(this.btn_remove_all);
+            this.Controls.Add(this.btn_edit);
+            this.Controls.Add(this.btn_remove);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.textBox_search);
             this.Controls.Add(this.listView_output);
@@ -290,5 +338,9 @@
         private ColumnHeader column_temp;
         private TextBox textBox_search;
         private Button btn_search;
+        private Button btn_remove;
+        private Button btn_edit;
+        private Button btn_remove_all;
+        private Button btn_close;
     }
 }
