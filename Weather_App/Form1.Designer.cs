@@ -48,6 +48,8 @@
             this.column_city = new System.Windows.Forms.ColumnHeader();
             this.column_state = new System.Windows.Forms.ColumnHeader();
             this.column_temp = new System.Windows.Forms.ColumnHeader();
+            this.textBox_search = new System.Windows.Forms.TextBox();
+            this.btn_search = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_weather_info
@@ -162,6 +164,7 @@
             this.btn_clear.TabIndex = 13;
             this.btn_clear.Text = "Clear";
             this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // lbl__test
             // 
@@ -186,9 +189,9 @@
             this.column_city,
             this.column_state,
             this.column_temp});
-            this.listView_output.Location = new System.Drawing.Point(46, 292);
+            this.listView_output.Location = new System.Drawing.Point(50, 292);
             this.listView_output.Name = "listView_output";
-            this.listView_output.Size = new System.Drawing.Size(704, 146);
+            this.listView_output.Size = new System.Drawing.Size(711, 146);
             this.listView_output.TabIndex = 16;
             this.listView_output.UseCompatibleStateImageBehavior = false;
             this.listView_output.View = System.Windows.Forms.View.Details;
@@ -196,27 +199,50 @@
             // column_date
             // 
             this.column_date.Text = "Date";
+            this.column_date.Width = 200;
             // 
             // column_city
             // 
             this.column_city.Text = "City";
             this.column_city.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.column_city.Width = 200;
             // 
             // column_state
             // 
             this.column_state.Text = "State";
             this.column_state.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.column_state.Width = 150;
             // 
             // column_temp
             // 
             this.column_temp.Text = "Temperature";
             this.column_temp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.column_temp.Width = 200;
+            // 
+            // textBox_search
+            // 
+            this.textBox_search.Location = new System.Drawing.Point(57, 459);
+            this.textBox_search.Name = "textBox_search";
+            this.textBox_search.Size = new System.Drawing.Size(125, 27);
+            this.textBox_search.TabIndex = 17;
+            // 
+            // btn_search
+            // 
+            this.btn_search.Location = new System.Drawing.Point(194, 457);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(94, 29);
+            this.btn_search.TabIndex = 18;
+            this.btn_search.Text = "Search";
+            this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 566);
+            this.Controls.Add(this.btn_search);
+            this.Controls.Add(this.textBox_search);
             this.Controls.Add(this.listView_output);
             this.Controls.Add(this.dateTimePicker_input);
             this.Controls.Add(this.lbl__test);
@@ -262,5 +288,7 @@
         private ColumnHeader column_city;
         private ColumnHeader column_state;
         private ColumnHeader column_temp;
+        private TextBox textBox_search;
+        private Button btn_search;
     }
 }
