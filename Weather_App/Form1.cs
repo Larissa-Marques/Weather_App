@@ -11,9 +11,12 @@ namespace Weather_App
 
         private void btn_add_info_Click(object sender, EventArgs e)
         {
+            decimal temp = Convert.ToDecimal(textBox_temp.Text);  
+
             //When this button is clicked,display city, state, temp and date
             // be displayed as a label
-            string[] row = { dateTimePicker_input.Value.ToShortDateString(), textBox_city.Text, comboBox_state.Text, textBox_temp.Text };
+            string[] row = { dateTimePicker_input.Value.ToShortDateString(), textBox_city.Text, 
+                comboBox_state.Text, temp.ToString("0.00") + "°F" };
             ListViewItem listViewItem = new ListViewItem(row);
             listView_output.Items.Add(listViewItem);
         }
@@ -75,6 +78,46 @@ namespace Weather_App
             {
                this.Close();
             }
+        }
+
+        private void btn_highest_temp_Click(object sender, EventArgs e)
+        {
+            decimal highest_temp = -80;
+            ListViewItem highest_temp_item = new ListViewItem();
+            foreach (ListViewItem item in listView_output.Items)
+            {
+                decimal temp = Convert.ToDecimal(item.SubItems[3].Text.Split("°")[0]);
+                if (temp > highest_temp) 
+                { 
+                    highest_temp = temp;
+                    highest_temp_item = item;
+                }
+            }
+            lbl__test.Text = highest_temp.ToString();
+            MessageBox.Show("Date: " + highest_temp_item.SubItems[0].Text + "\nCity: " +
+                    highest_temp_item.SubItems[1].Text + "\nState: " +
+                    highest_temp_item.SubItems[2].Text + "\nTemperature: " + 
+                    highest_temp_item.SubItems[3].Text);
+        }
+
+        private void btn_lowest_temp_Click(object sender, EventArgs e)
+        {
+            decimal lowest_temp = 130;
+            ListViewItem lowest_temp_item = new ListViewItem();
+            foreach (ListViewItem item in listView_output.Items)
+            {
+                decimal temp = Convert.ToDecimal(item.SubItems[3].Text.Split("°")[0]);
+                if (temp < lowest_temp)
+                {
+                    lowest_temp = temp;
+                    lowest_temp_item = item;
+                }
+            }
+            lbl__test.Text = lowest_temp.ToString();
+            MessageBox.Show("Date: " + lowest_temp_item.SubItems[0].Text + "\nCity: " +
+                    lowest_temp_item.SubItems[1].Text + "\nState: " +
+                    lowest_temp_item.SubItems[2].Text + "\nTemperature: " +
+                    lowest_temp_item.SubItems[3].Text);
         }
     }
 }

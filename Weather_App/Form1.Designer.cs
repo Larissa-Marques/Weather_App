@@ -54,6 +54,8 @@
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_remove_all = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
+            this.btn_highest_temp = new System.Windows.Forms.Button();
+            this.btn_lowest_temp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_weather_info
@@ -137,7 +139,15 @@
             // 
             // comboBox_state
             // 
+            this.comboBox_state.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_state.FormattingEnabled = true;
+            this.comboBox_state.Items.AddRange(new object[] {
+            "",
+            "MN",
+            "ND",
+            "SD",
+            "IA",
+            "WI"});
             this.comboBox_state.Location = new System.Drawing.Point(106, 107);
             this.comboBox_state.Name = "comboBox_state";
             this.comboBox_state.Size = new System.Drawing.Size(151, 28);
@@ -262,7 +272,7 @@
             // 
             // btn_remove_all
             // 
-            this.btn_remove_all.Location = new System.Drawing.Point(304, 507);
+            this.btn_remove_all.Location = new System.Drawing.Point(316, 507);
             this.btn_remove_all.Name = "btn_remove_all";
             this.btn_remove_all.Size = new System.Drawing.Size(134, 29);
             this.btn_remove_all.TabIndex = 21;
@@ -280,11 +290,33 @@
             this.btn_close.UseVisualStyleBackColor = true;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
+            // btn_highest_temp
+            // 
+            this.btn_highest_temp.Location = new System.Drawing.Point(57, 507);
+            this.btn_highest_temp.Name = "btn_highest_temp";
+            this.btn_highest_temp.Size = new System.Drawing.Size(125, 29);
+            this.btn_highest_temp.TabIndex = 23;
+            this.btn_highest_temp.Text = "Highest Temp";
+            this.btn_highest_temp.UseVisualStyleBackColor = true;
+            this.btn_highest_temp.Click += new System.EventHandler(this.btn_highest_temp_Click);
+            // 
+            // btn_lowest_temp
+            // 
+            this.btn_lowest_temp.Location = new System.Drawing.Point(194, 507);
+            this.btn_lowest_temp.Name = "btn_lowest_temp";
+            this.btn_lowest_temp.Size = new System.Drawing.Size(110, 29);
+            this.btn_lowest_temp.TabIndex = 24;
+            this.btn_lowest_temp.Text = "Lowest Temp";
+            this.btn_lowest_temp.UseVisualStyleBackColor = true;
+            this.btn_lowest_temp.Click += new System.EventHandler(this.btn_lowest_temp_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 566);
+            this.Controls.Add(this.btn_lowest_temp);
+            this.Controls.Add(this.btn_highest_temp);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.btn_remove_all);
             this.Controls.Add(this.btn_edit);
@@ -342,5 +374,7 @@
         private Button btn_edit;
         private Button btn_remove_all;
         private Button btn_close;
+        private Button btn_highest_temp;
+        private Button btn_lowest_temp;
     }
 }
