@@ -1,6 +1,7 @@
 // Weather application puprpose is to collect weather data to calculate averages, find lowest and highest temp
 
 using System.Drawing.Text;
+using static System.Windows.Forms.LinkLabel;
 
 namespace Weather_App
 {
@@ -89,11 +90,20 @@ namespace Weather_App
             DialogResult result = MessageBox.Show(message, caption,
                                          MessageBoxButtons.YesNo);
 
-            // If the no button was pressed ...
+            // If the yes button was pressed ...
             if (result == DialogResult.Yes)
             {
-               this.Close();
+                // Save data to the file
+                List<string> lines = new List<string>();
+                foreach (ListViewItem item in listView_output.Items)
+                {
+                    string line = item.SubItems[0].Text + ',' + item.SubItems[1].Text + ',' +
+                        item.SubItems[2].Text + ',' + item.SubItems[3].Text;
+                    lines.Add(line);
+                }
+                File.WriteAllLines("Weather.csv", lines);
             }
+            this.Close();
         }
 
         private void btn_highest_temp_Click(object sender, EventArgs e)
