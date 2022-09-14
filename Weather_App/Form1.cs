@@ -1,3 +1,5 @@
+// Weather application puprpose is to collect weather data to calculate averages, find lowest and highest temp
+
 using System.Drawing.Text;
 
 namespace Weather_App
@@ -9,12 +11,24 @@ namespace Weather_App
             InitializeComponent();
         }
 
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+            //Reading the file 
+            string fullPath = Path.GetFullPath(Path.GetDirectoryName(Application.ExecutablePath) + "\\Weather.csv");
+            string[] contents = File.ReadAllLines(fullPath);
+            foreach (string line in contents)
+            {
+                string[] line_split =  line.Split(',');
+                ListViewItem listViewItem = new ListViewItem(line_split);
+                listView_output.Items.Add(listViewItem);
+            }         
+        }
+
         private void btn_add_info_Click(object sender, EventArgs e)
         {
             decimal temp = Convert.ToDecimal(textBox_temp.Text);  
 
-            //When this button is clicked,display city, state, temp and date
-            // be displayed as a label
+            //When this button is clicked, the city, state, temp and date will be displayed on the listview
             string[] row = { dateTimePicker_input.Value.ToShortDateString(), textBox_city.Text, 
                 comboBox_state.Text, temp.ToString("0.00") + "°F" };
             ListViewItem listViewItem = new ListViewItem(row);
@@ -23,7 +37,7 @@ namespace Weather_App
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
-            //When this button is clicked, the data (city, state, temp, date) will be erased.
+            //When this button is clicked, the info (city, state, temp, date) will be erased.
             textBox_city.Text = "";
             comboBox_state.Text = "";
             textBox_temp.Text = "";
@@ -32,7 +46,7 @@ namespace Weather_App
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            //When this button is clicked, it will find on the table the data entered by the user
+            //When this button is clicked, it will find on the listview the data entered by the user
             string search_term = textBox_search.Text;
             ListViewItem matched_item = listView_output.FindItemWithText(search_term);
 
@@ -46,13 +60,14 @@ namespace Weather_App
 
         private void btn_remove_Click(object sender, EventArgs e)
         {
-
+            //When this button is clicked, it will remove all the selected info
             listView_output.Items.Remove(listView_output.SelectedItems[0]);
            
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
+            //When this button is clicked, it will edit the selected info
             ListViewItem selected_item = listView_output.SelectedItems[0];
             dateTimePicker_input.Text = selected_item.SubItems[0].Text;
             textBox_city.Text = selected_item.SubItems[1].Text;
@@ -63,6 +78,7 @@ namespace Weather_App
 
         private void btn_remove_all_Click(object sender, EventArgs e)
         {
+            //When this button is clicked, it will remove all the info, no need to select
             listView_output.Items.Clear();
         }
 

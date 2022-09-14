@@ -183,7 +183,7 @@
             // lbl__test
             // 
             this.lbl__test.AutoSize = true;
-            this.lbl__test.Location = new System.Drawing.Point(435, 182);
+            this.lbl__test.Location = new System.Drawing.Point(410, 182);
             this.lbl__test.Name = "lbl__test";
             this.lbl__test.Size = new System.Drawing.Size(50, 20);
             this.lbl__test.TabIndex = 14;
@@ -341,6 +341,7 @@
             this.Controls.Add(this.lbl_weather_info);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
