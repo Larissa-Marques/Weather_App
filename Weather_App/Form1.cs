@@ -19,10 +19,22 @@ namespace Weather_App
             string[] contents = File.ReadAllLines(fullPath);
             foreach (string line in contents)
             {
-                string[] line_split =  line.Split(',');
+                string[] line_split = line.Split(',');
                 ListViewItem listViewItem = new ListViewItem(line_split);
                 listView_output.Items.Add(listViewItem);
-            }         
+            }
+
+            // Populate the temperature averages
+            decimal sum = 0;
+            int count = 0;
+            foreach (ListViewItem item in listView_output.Items)
+            {
+                decimal temp = Convert.ToDecimal(item.SubItems[3].Text.Split("°")[0]);
+                sum = sum + temp;
+                count++;
+            }
+            decimal average = sum / count;
+            textBox_region.Text = average.ToString();
         }
 
         private void btn_add_info_Click(object sender, EventArgs e)
@@ -119,7 +131,7 @@ namespace Weather_App
                     highest_temp_item = item;
                 }
             }
-            lbl__test.Text = highest_temp.ToString();
+            lbl__region.Text = highest_temp.ToString();
             MessageBox.Show("Date: " + highest_temp_item.SubItems[0].Text + "\nCity: " +
                     highest_temp_item.SubItems[1].Text + "\nState: " +
                     highest_temp_item.SubItems[2].Text + "\nTemperature: " + 
@@ -139,7 +151,7 @@ namespace Weather_App
                     lowest_temp_item = item;
                 }
             }
-            lbl__test.Text = lowest_temp.ToString();
+            lbl__region.Text = lowest_temp.ToString();
             MessageBox.Show("Date: " + lowest_temp_item.SubItems[0].Text + "\nCity: " +
                     lowest_temp_item.SubItems[1].Text + "\nState: " +
                     lowest_temp_item.SubItems[2].Text + "\nTemperature: " +

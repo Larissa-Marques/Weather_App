@@ -41,7 +41,7 @@
             this.textBox_temp = new System.Windows.Forms.TextBox();
             this.btn_add_info = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
-            this.lbl__test = new System.Windows.Forms.Label();
+            this.lbl__region = new System.Windows.Forms.Label();
             this.dateTimePicker_input = new System.Windows.Forms.DateTimePicker();
             this.listView_output = new System.Windows.Forms.ListView();
             this.column_date = new System.Windows.Forms.ColumnHeader();
@@ -56,6 +56,7 @@
             this.btn_close = new System.Windows.Forms.Button();
             this.btn_highest_temp = new System.Windows.Forms.Button();
             this.btn_lowest_temp = new System.Windows.Forms.Button();
+            this.textBox_region = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbl_weather_info
@@ -180,14 +181,14 @@
             this.btn_clear.UseVisualStyleBackColor = true;
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
-            // lbl__test
+            // lbl__region
             // 
-            this.lbl__test.AutoSize = true;
-            this.lbl__test.Location = new System.Drawing.Point(410, 182);
-            this.lbl__test.Name = "lbl__test";
-            this.lbl__test.Size = new System.Drawing.Size(50, 20);
-            this.lbl__test.TabIndex = 14;
-            this.lbl__test.Text = "label2";
+            this.lbl__region.AutoSize = true;
+            this.lbl__region.Location = new System.Drawing.Point(410, 239);
+            this.lbl__region.Name = "lbl__region";
+            this.lbl__region.Size = new System.Drawing.Size(56, 20);
+            this.lbl__region.TabIndex = 14;
+            this.lbl__region.Text = "Region";
             // 
             // dateTimePicker_input
             // 
@@ -310,11 +311,21 @@
             this.btn_lowest_temp.UseVisualStyleBackColor = true;
             this.btn_lowest_temp.Click += new System.EventHandler(this.btn_lowest_temp_Click);
             // 
+            // textBox_region
+            // 
+            this.textBox_region.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox_region.Location = new System.Drawing.Point(486, 236);
+            this.textBox_region.Name = "textBox_region";
+            this.textBox_region.ReadOnly = true;
+            this.textBox_region.Size = new System.Drawing.Size(125, 27);
+            this.textBox_region.TabIndex = 25;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 566);
+            this.Controls.Add(this.textBox_region);
             this.Controls.Add(this.btn_lowest_temp);
             this.Controls.Add(this.btn_highest_temp);
             this.Controls.Add(this.btn_close);
@@ -325,7 +336,7 @@
             this.Controls.Add(this.textBox_search);
             this.Controls.Add(this.listView_output);
             this.Controls.Add(this.dateTimePicker_input);
-            this.Controls.Add(this.lbl__test);
+            this.Controls.Add(this.lbl__region);
             this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.btn_add_info);
             this.Controls.Add(this.textBox_temp);
@@ -362,7 +373,7 @@
         private TextBox textBox_temp;
         private Button btn_add_info;
         private Button btn_clear;
-        private Label lbl__test;
+        private Label lbl__region;
         private DateTimePicker dateTimePicker_input;
         private ListView listView_output;
         private ColumnHeader column_date;
@@ -377,5 +388,6 @@
         private Button btn_close;
         private Button btn_highest_temp;
         private Button btn_lowest_temp;
+        private TextBox textBox_region;
     }
 }
