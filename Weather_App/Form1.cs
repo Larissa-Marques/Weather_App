@@ -23,18 +23,40 @@ namespace Weather_App
                 ListViewItem listViewItem = new ListViewItem(line_split);
                 listView_output.Items.Add(listViewItem);
             }
-
             // Populate the temperature averages
+            populate_averages();
+        }
+
+        private void populate_averages() 
+        {
+            textBox_region.Text = calculate_averages();
+            textBox_MN.Text = calculate_averages("MN");
+            textBox_ND.Text = calculate_averages("ND");
+            textBox_SD.Text = calculate_averages("SD");
+            textBox_IA.Text = calculate_averages("IA");
+            textBox_WI.Text = calculate_averages("WI");
+        }
+
+        private string calculate_averages(string state = "")
+        {
+            string result = "";
             decimal sum = 0;
             int count = 0;
             foreach (ListViewItem item in listView_output.Items)
             {
-                decimal temp = Convert.ToDecimal(item.SubItems[3].Text.Split("°")[0]);
-                sum = sum + temp;
-                count++;
+                if (state == "" || item.SubItems[2].Text == state)
+                {
+                    decimal temp = Convert.ToDecimal(item.SubItems[3].Text.Split("°")[0]);
+                    sum = sum + temp;
+                    count++;
+                }
             }
-            decimal average = sum / count;
-            textBox_region.Text = average.ToString();
+            if (count != 0) 
+            {
+                decimal average = sum / count;
+                result = average.ToString("0.00") + "°F";
+            }
+            return result;
         }
 
         private void btn_add_info_Click(object sender, EventArgs e)
@@ -46,6 +68,7 @@ namespace Weather_App
                 comboBox_state.Text, temp.ToString("0.00") + "°F" };
             ListViewItem listViewItem = new ListViewItem(row);
             listView_output.Items.Add(listViewItem);
+            populate_averages();
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
@@ -75,7 +98,7 @@ namespace Weather_App
         {
             //When this button is clicked, it will remove all the selected info
             listView_output.Items.Remove(listView_output.SelectedItems[0]);
-           
+            populate_averages();
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
@@ -87,12 +110,14 @@ namespace Weather_App
             comboBox_state.Text = selected_item.SubItems[2].Text;
             textBox_temp.Text = selected_item.SubItems[3].Text;
             listView_output.Items.Remove(selected_item);
+            populate_averages();
         }
 
         private void btn_remove_all_Click(object sender, EventArgs e)
         {
             //When this button is clicked, it will remove all the info, no need to select
             listView_output.Items.Clear();
+            populate_averages();
         }
 
         private void btn_close_Click(object sender, EventArgs e)

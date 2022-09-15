@@ -35,7 +35,7 @@
             this.lbl_date = new System.Windows.Forms.Label();
             this.lbl_average_temp = new System.Windows.Forms.Label();
             this.lbl_MN = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_ND = new System.Windows.Forms.Label();
             this.textBox_city = new System.Windows.Forms.TextBox();
             this.comboBox_state = new System.Windows.Forms.ComboBox();
             this.textBox_temp = new System.Windows.Forms.TextBox();
@@ -57,6 +57,14 @@
             this.btn_highest_temp = new System.Windows.Forms.Button();
             this.btn_lowest_temp = new System.Windows.Forms.Button();
             this.textBox_region = new System.Windows.Forms.TextBox();
+            this.lbl_SD = new System.Windows.Forms.Label();
+            this.lbl_IA = new System.Windows.Forms.Label();
+            this.lbl_WI = new System.Windows.Forms.Label();
+            this.textBox_MN = new System.Windows.Forms.TextBox();
+            this.textBox_ND = new System.Windows.Forms.TextBox();
+            this.textBox_SD = new System.Windows.Forms.TextBox();
+            this.textBox_IA = new System.Windows.Forms.TextBox();
+            this.textBox_WI = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbl_weather_info
@@ -116,20 +124,20 @@
             // lbl_MN
             // 
             this.lbl_MN.AutoSize = true;
-            this.lbl_MN.Location = new System.Drawing.Point(405, 82);
+            this.lbl_MN.Location = new System.Drawing.Point(406, 83);
             this.lbl_MN.Name = "lbl_MN";
             this.lbl_MN.Size = new System.Drawing.Size(33, 20);
             this.lbl_MN.TabIndex = 6;
             this.lbl_MN.Text = "MN";
             // 
-            // label1
+            // lbl_ND
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(410, 115);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
+            this.lbl_ND.AutoSize = true;
+            this.lbl_ND.Location = new System.Drawing.Point(408, 116);
+            this.lbl_ND.Name = "lbl_ND";
+            this.lbl_ND.Size = new System.Drawing.Size(31, 20);
+            this.lbl_ND.TabIndex = 7;
+            this.lbl_ND.Text = "ND";
             // 
             // textBox_city
             // 
@@ -184,7 +192,7 @@
             // lbl__region
             // 
             this.lbl__region.AutoSize = true;
-            this.lbl__region.Location = new System.Drawing.Point(410, 239);
+            this.lbl__region.Location = new System.Drawing.Point(384, 247);
             this.lbl__region.Name = "lbl__region";
             this.lbl__region.Size = new System.Drawing.Size(56, 20);
             this.lbl__region.TabIndex = 14;
@@ -314,17 +322,92 @@
             // textBox_region
             // 
             this.textBox_region.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox_region.Location = new System.Drawing.Point(486, 236);
+            this.textBox_region.Location = new System.Drawing.Point(444, 245);
             this.textBox_region.Name = "textBox_region";
             this.textBox_region.ReadOnly = true;
             this.textBox_region.Size = new System.Drawing.Size(125, 27);
             this.textBox_region.TabIndex = 25;
+            // 
+            // lbl_SD
+            // 
+            this.lbl_SD.AutoSize = true;
+            this.lbl_SD.Location = new System.Drawing.Point(410, 152);
+            this.lbl_SD.Name = "lbl_SD";
+            this.lbl_SD.Size = new System.Drawing.Size(28, 20);
+            this.lbl_SD.TabIndex = 26;
+            this.lbl_SD.Text = "SD";
+            // 
+            // lbl_IA
+            // 
+            this.lbl_IA.AutoSize = true;
+            this.lbl_IA.Location = new System.Drawing.Point(412, 185);
+            this.lbl_IA.Name = "lbl_IA";
+            this.lbl_IA.Size = new System.Drawing.Size(23, 20);
+            this.lbl_IA.TabIndex = 27;
+            this.lbl_IA.Text = "IA";
+            // 
+            // lbl_WI
+            // 
+            this.lbl_WI.AutoSize = true;
+            this.lbl_WI.Location = new System.Drawing.Point(411, 216);
+            this.lbl_WI.Name = "lbl_WI";
+            this.lbl_WI.Size = new System.Drawing.Size(27, 20);
+            this.lbl_WI.TabIndex = 28;
+            this.lbl_WI.Text = "WI";
+            // 
+            // textBox_MN
+            // 
+            this.textBox_MN.Location = new System.Drawing.Point(444, 79);
+            this.textBox_MN.Name = "textBox_MN";
+            this.textBox_MN.ReadOnly = true;
+            this.textBox_MN.Size = new System.Drawing.Size(125, 27);
+            this.textBox_MN.TabIndex = 29;
+            // 
+            // textBox_ND
+            // 
+            this.textBox_ND.Location = new System.Drawing.Point(444, 112);
+            this.textBox_ND.Name = "textBox_ND";
+            this.textBox_ND.ReadOnly = true;
+            this.textBox_ND.Size = new System.Drawing.Size(125, 27);
+            this.textBox_ND.TabIndex = 30;
+            // 
+            // textBox_SD
+            // 
+            this.textBox_SD.Location = new System.Drawing.Point(444, 146);
+            this.textBox_SD.Name = "textBox_SD";
+            this.textBox_SD.ReadOnly = true;
+            this.textBox_SD.Size = new System.Drawing.Size(125, 27);
+            this.textBox_SD.TabIndex = 31;
+            // 
+            // textBox_IA
+            // 
+            this.textBox_IA.Location = new System.Drawing.Point(444, 179);
+            this.textBox_IA.Name = "textBox_IA";
+            this.textBox_IA.ReadOnly = true;
+            this.textBox_IA.Size = new System.Drawing.Size(125, 27);
+            this.textBox_IA.TabIndex = 32;
+            // 
+            // textBox_WI
+            // 
+            this.textBox_WI.Location = new System.Drawing.Point(444, 212);
+            this.textBox_WI.Name = "textBox_WI";
+            this.textBox_WI.ReadOnly = true;
+            this.textBox_WI.Size = new System.Drawing.Size(125, 27);
+            this.textBox_WI.TabIndex = 33;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 566);
+            this.Controls.Add(this.textBox_WI);
+            this.Controls.Add(this.textBox_IA);
+            this.Controls.Add(this.textBox_SD);
+            this.Controls.Add(this.textBox_ND);
+            this.Controls.Add(this.textBox_MN);
+            this.Controls.Add(this.lbl_WI);
+            this.Controls.Add(this.lbl_IA);
+            this.Controls.Add(this.lbl_SD);
             this.Controls.Add(this.textBox_region);
             this.Controls.Add(this.btn_lowest_temp);
             this.Controls.Add(this.btn_highest_temp);
@@ -342,7 +425,7 @@
             this.Controls.Add(this.textBox_temp);
             this.Controls.Add(this.comboBox_state);
             this.Controls.Add(this.textBox_city);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_ND);
             this.Controls.Add(this.lbl_MN);
             this.Controls.Add(this.lbl_average_temp);
             this.Controls.Add(this.lbl_date);
@@ -367,7 +450,7 @@
         private Label lbl_date;
         private Label lbl_average_temp;
         private Label lbl_MN;
-        private Label label1;
+        private Label lbl_ND;
         private TextBox textBox_city;
         private ComboBox comboBox_state;
         private TextBox textBox_temp;
@@ -389,5 +472,13 @@
         private Button btn_highest_temp;
         private Button btn_lowest_temp;
         private TextBox textBox_region;
+        private Label lbl_SD;
+        private Label lbl_IA;
+        private Label lbl_WI;
+        private TextBox textBox_MN;
+        private TextBox textBox_ND;
+        private TextBox textBox_SD;
+        private TextBox textBox_IA;
+        private TextBox textBox_WI;
     }
 }
