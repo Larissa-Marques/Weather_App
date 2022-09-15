@@ -29,6 +29,7 @@ namespace Weather_App
 
         private void populate_averages() 
         {
+            // Calling the calculate_averages method for the region and each state
             textBox_region.Text = calculate_averages();
             textBox_MN.Text = calculate_averages("MN");
             textBox_ND.Text = calculate_averages("ND");
@@ -39,6 +40,7 @@ namespace Weather_App
 
         private string calculate_averages(string state = "")
         {
+            //Based on the given state, or no state, calculate and return the average temperature
             string result = "";
             decimal sum = 0;
             int count = 0;
@@ -145,6 +147,7 @@ namespace Weather_App
 
         private void btn_highest_temp_Click(object sender, EventArgs e)
         {
+            // When this button is clicked, it will find and show the record with the highest temp
             decimal highest_temp = -80;
             ListViewItem highest_temp_item = new ListViewItem();
             foreach (ListViewItem item in listView_output.Items)
@@ -165,6 +168,7 @@ namespace Weather_App
 
         private void btn_lowest_temp_Click(object sender, EventArgs e)
         {
+            // When this button is clicked, it will find and show the record with the lowest temp
             decimal lowest_temp = 130;
             ListViewItem lowest_temp_item = new ListViewItem();
             foreach (ListViewItem item in listView_output.Items)
