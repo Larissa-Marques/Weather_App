@@ -1,6 +1,7 @@
 // Weather application puprpose is to collect weather data to calculate averages, find lowest and highest temp
 
 using System.Drawing.Text;
+using System.Net.Security;
 using static System.Windows.Forms.LinkLabel;
 
 namespace Weather_App
@@ -63,14 +64,42 @@ namespace Weather_App
 
         private void btn_add_info_Click(object sender, EventArgs e)
         {
-            decimal temp = Convert.ToDecimal(textBox_temp.Text);  
-
-            //When this button is clicked, the city, state, temp and date will be displayed on the listview
-            string[] row = { dateTimePicker_input.Value.ToShortDateString(), textBox_city.Text, 
-                comboBox_state.Text, temp.ToString("0.00") + "°F" };
-            ListViewItem listViewItem = new ListViewItem(row);
-            listView_output.Items.Add(listViewItem);
-            populate_averages();
+            decimal temp;
+            // Validation if no data is entered, temperature formating and range.
+            if (textBox_city.Text == "")
+            {
+                textBox_city.Focus();
+                MessageBox.Show("Please enter a city.");
+            }
+            else if (comboBox_state.Text == "")
+            {
+                comboBox_state.Focus();
+                MessageBox.Show("Please enter a state.");
+            }
+            else if (textBox_temp.Text == "")
+            {
+                textBox_temp.Focus();
+                MessageBox.Show("Please enter a temperature.");
+            }
+            else if (!Decimal.TryParse(textBox_temp.Text, out temp))
+            {
+                textBox_temp.Focus();
+                MessageBox.Show("Invalid temperature format. Please enter a number.");
+            }
+            else if (temp < -80 || temp > 130)
+            {
+                textBox_temp.Focus();
+                MessageBox.Show("The temperature should be above -80 and below 130.");
+            }
+            else
+            {
+                //When this button is clicked, the city, state, temp and date will be displayed on the listview
+                string[] row = { dateTimePicker_input.Value.ToShortDateString(), textBox_city.Text,
+                    comboBox_state.Text, temp.ToString("0.00") + "°F" };
+                ListViewItem listViewItem = new ListViewItem(row);
+                listView_output.Items.Add(listViewItem);
+                populate_averages();
+            }
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
@@ -93,7 +122,10 @@ namespace Weather_App
                     matched_item.SubItems[1].Text + "\nState: " +
                     matched_item.SubItems[2].Text + "\nTemperature: " + matched_item.SubItems[3].Text);
             else
+            {
+                textBox_search.Focus();
                 MessageBox.Show("Search not found!");
+            }
         }
 
         private void btn_remove_Click(object sender, EventArgs e)
