@@ -121,34 +121,37 @@ namespace Weather_App
             string search_term = textBox_search.Text;
             ListViewItem matched_item = listView_output.FindItemWithText(search_term);
 
-            if (matched_item != null)
+            if (matched_item != null && search_term != "")
                 MessageBox.Show("Date: " + matched_item.SubItems[0].Text + "\nCity: " +
                     matched_item.SubItems[1].Text + "\nState: " +
                     matched_item.SubItems[2].Text + "\nTemperature: " + matched_item.SubItems[3].Text);
             else
-            {
-                textBox_search.Focus();
                 MessageBox.Show("Search not found!");
-            }
         }
 
         private void btn_remove_Click(object sender, EventArgs e)
         {
             // When this button is clicked, it will remove all the selected information.
-            listView_output.Items.Remove(listView_output.SelectedItems[0]);
-            populate_averages();
+            if (listView_output.SelectedItems.Count > 0)
+            {
+                listView_output.Items.Remove(listView_output.SelectedItems[0]);
+                populate_averages();
+            }
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
             // When this button is clicked, it will edit the selected information.
-            ListViewItem selected_item = listView_output.SelectedItems[0];
-            dateTimePicker_input.Text = selected_item.SubItems[0].Text;
-            textBox_city.Text = selected_item.SubItems[1].Text;
-            comboBox_state.Text = selected_item.SubItems[2].Text;
-            textBox_temp.Text = selected_item.SubItems[3].Text;
-            listView_output.Items.Remove(selected_item);
-            populate_averages();
+            if (listView_output.SelectedItems.Count > 0)
+            {
+                ListViewItem selected_item = listView_output.SelectedItems[0];
+                dateTimePicker_input.Text = selected_item.SubItems[0].Text;
+                textBox_city.Text = selected_item.SubItems[1].Text;
+                comboBox_state.Text = selected_item.SubItems[2].Text;
+                textBox_temp.Text = selected_item.SubItems[3].Text;
+                listView_output.Items.Remove(selected_item);
+                populate_averages();
+            }
         }
 
         private void btn_remove_all_Click(object sender, EventArgs e)
@@ -184,43 +187,49 @@ namespace Weather_App
         private void btn_highest_temp_Click(object sender, EventArgs e)
         {
             // When this button is clicked, it will find and show the record with the highest temperature.
-            decimal highest_temp = -80;
-            ListViewItem highest_temp_item = new ListViewItem();
-            foreach (ListViewItem item in listView_output.Items)
+            if (listView_output.Items.Count != 0)
             {
-                decimal temp = Convert.ToDecimal(item.SubItems[3].Text.Split("°")[0]);
-                if (temp > highest_temp) 
-                { 
-                    highest_temp = temp;
-                    highest_temp_item = item;
+                decimal highest_temp = -80;
+                ListViewItem highest_temp_item = new ListViewItem();
+                foreach (ListViewItem item in listView_output.Items)
+                {
+                    decimal temp = Convert.ToDecimal(item.SubItems[3].Text.Split("°")[0]);
+                    if (temp > highest_temp)
+                    {
+                        highest_temp = temp;
+                        highest_temp_item = item;
+                    }
                 }
+
+                MessageBox.Show("Date: " + highest_temp_item.SubItems[0].Text + "\nCity: " +
+                        highest_temp_item.SubItems[1].Text + "\nState: " +
+                        highest_temp_item.SubItems[2].Text + "\nTemperature: " +
+                        highest_temp_item.SubItems[3].Text);
             }
-            lbl__region.Text = highest_temp.ToString();
-            MessageBox.Show("Date: " + highest_temp_item.SubItems[0].Text + "\nCity: " +
-                    highest_temp_item.SubItems[1].Text + "\nState: " +
-                    highest_temp_item.SubItems[2].Text + "\nTemperature: " + 
-                    highest_temp_item.SubItems[3].Text);
         }
 
         private void btn_lowest_temp_Click(object sender, EventArgs e)
         {
             // When this button is clicked, it will find and show the record with the lowest temperature.
-            decimal lowest_temp = 130;
-            ListViewItem lowest_temp_item = new ListViewItem();
-            foreach (ListViewItem item in listView_output.Items)
+            if (listView_output.Items.Count != 0)
             {
-                decimal temp = Convert.ToDecimal(item.SubItems[3].Text.Split("°")[0]);
-                if (temp < lowest_temp)
+                decimal lowest_temp = 130;
+                ListViewItem lowest_temp_item = new ListViewItem();
+                foreach (ListViewItem item in listView_output.Items)
                 {
-                    lowest_temp = temp;
-                    lowest_temp_item = item;
+                    decimal temp = Convert.ToDecimal(item.SubItems[3].Text.Split("°")[0]);
+                    if (temp < lowest_temp)
+                    {
+                        lowest_temp = temp;
+                        lowest_temp_item = item;
+                    }
                 }
+
+                MessageBox.Show("Date: " + lowest_temp_item.SubItems[0].Text + "\nCity: " +
+                        lowest_temp_item.SubItems[1].Text + "\nState: " +
+                        lowest_temp_item.SubItems[2].Text + "\nTemperature: " +
+                        lowest_temp_item.SubItems[3].Text);
             }
-            lbl__region.Text = lowest_temp.ToString();
-            MessageBox.Show("Date: " + lowest_temp_item.SubItems[0].Text + "\nCity: " +
-                    lowest_temp_item.SubItems[1].Text + "\nState: " +
-                    lowest_temp_item.SubItems[2].Text + "\nTemperature: " +
-                    lowest_temp_item.SubItems[3].Text);
         }
     }
 }
