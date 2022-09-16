@@ -1,4 +1,7 @@
-// Weather application puprpose is to collect weather data to calculate averages, find lowest and highest temp
+// Weather application purpose is to collect weather data to calculate averages of five states (Minnesota,
+// North Dakota, South Dakota, Wisconsin and Iowa) and the region. It is also possible to find the 
+// lowest and highest temperature, remove a selected record or remove all records. There is the option to
+// save changes when closing the application.
 
 using System.Drawing.Text;
 using System.Net.Security;
@@ -15,7 +18,7 @@ namespace Weather_App
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            //Reading the file 
+            // Reading the file and populating the listview 
             string fullPath = Path.GetFullPath(Path.GetDirectoryName(Application.ExecutablePath) + "\\Weather.csv");
             string[] contents = File.ReadAllLines(fullPath);
             foreach (string line in contents)
@@ -30,7 +33,7 @@ namespace Weather_App
 
         private void populate_averages() 
         {
-            // Calling the calculate_averages method for the region and each state
+            // Calling the calculate_averages method for the region and each state (MN, ND, SD, WI, IA)
             textBox_region.Text = calculate_averages();
             textBox_MN.Text = calculate_averages("MN");
             textBox_ND.Text = calculate_averages("ND");
@@ -41,7 +44,7 @@ namespace Weather_App
 
         private string calculate_averages(string state = "")
         {
-            //Based on the given state, or no state, calculate and return the average temperature
+            // Based on the given state, or no state, calculate and return the average temperature.
             string result = "";
             decimal sum = 0;
             int count = 0;
@@ -93,7 +96,8 @@ namespace Weather_App
             }
             else
             {
-                //When this button is clicked, the city, state, temp and date will be displayed on the listview
+                // When this button is clicked, the city, state, temperature and date will be displayed on
+                // the listview.
                 string[] row = { dateTimePicker_input.Value.ToShortDateString(), textBox_city.Text,
                     comboBox_state.Text, temp.ToString("0.00") + "°F" };
                 ListViewItem listViewItem = new ListViewItem(row);
@@ -104,7 +108,7 @@ namespace Weather_App
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
-            //When this button is clicked, the info (city, state, temp, date) will be erased.
+            // When this button is clicked, the info (city, state, temp, date) will be erased.
             textBox_city.Text = "";
             comboBox_state.Text = "";
             textBox_temp.Text = "";
@@ -130,14 +134,14 @@ namespace Weather_App
 
         private void btn_remove_Click(object sender, EventArgs e)
         {
-            //When this button is clicked, it will remove all the selected info
+            // When this button is clicked, it will remove all the selected information.
             listView_output.Items.Remove(listView_output.SelectedItems[0]);
             populate_averages();
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            //When this button is clicked, it will edit the selected info
+            // When this button is clicked, it will edit the selected information.
             ListViewItem selected_item = listView_output.SelectedItems[0];
             dateTimePicker_input.Text = selected_item.SubItems[0].Text;
             textBox_city.Text = selected_item.SubItems[1].Text;
@@ -149,7 +153,7 @@ namespace Weather_App
 
         private void btn_remove_all_Click(object sender, EventArgs e)
         {
-            //When this button is clicked, it will remove all the info, no need to select
+            // When this button is clicked, it will remove all the information without any selection.
             listView_output.Items.Clear();
             populate_averages();
         }
@@ -161,10 +165,10 @@ namespace Weather_App
             DialogResult result = MessageBox.Show(message, caption,
                                          MessageBoxButtons.YesNo);
 
-            // If the yes button was pressed ...
+            // If the Yes button is pressed...
             if (result == DialogResult.Yes)
             {
-                // Save data to the file
+                // Save data to the file.
                 List<string> lines = new List<string>();
                 foreach (ListViewItem item in listView_output.Items)
                 {
@@ -179,7 +183,7 @@ namespace Weather_App
 
         private void btn_highest_temp_Click(object sender, EventArgs e)
         {
-            // When this button is clicked, it will find and show the record with the highest temp
+            // When this button is clicked, it will find and show the record with the highest temperature.
             decimal highest_temp = -80;
             ListViewItem highest_temp_item = new ListViewItem();
             foreach (ListViewItem item in listView_output.Items)
@@ -200,7 +204,7 @@ namespace Weather_App
 
         private void btn_lowest_temp_Click(object sender, EventArgs e)
         {
-            // When this button is clicked, it will find and show the record with the lowest temp
+            // When this button is clicked, it will find and show the record with the lowest temperature.
             decimal lowest_temp = 130;
             ListViewItem lowest_temp_item = new ListViewItem();
             foreach (ListViewItem item in listView_output.Items)
